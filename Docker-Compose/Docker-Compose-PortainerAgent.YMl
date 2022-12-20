@@ -1,0 +1,11 @@
+version: '3.9'
+services:
+  agent:
+    container_name: portainer-agent
+    image: portainer/agent:latest
+    restart: always
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock #Entrypoint for Docker CLI. UNIX socket. 
+      - /docker/portainer:/var/lib/docker/volumes #data
+    ports:
+      - "9001:9001"

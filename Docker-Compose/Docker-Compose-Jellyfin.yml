@@ -1,0 +1,18 @@
+version: "3.8"
+services:
+  jellyfin:
+    image: lscr.io/linuxserver/jellyfin:latest
+    container_name: jellyfin
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/toronto
+      - JELLYFIN_PublishedServerUrl=CHANGEME
+    volumes:
+      - /docker/jellyfin:/config
+      - /docker/mounts/tvshows:/data/tvshows
+      - /docker/mounts/movies:/data/movies
+    ports:
+      - 8920:8920 #SSL
+      - 8096:8096
+    restart: unless-stopped

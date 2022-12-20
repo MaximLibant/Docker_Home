@@ -1,0 +1,21 @@
+version: '3.9'
+services:
+    transmission-openvpn:
+        cap_add:
+            - NET_ADMIN
+        volumes:
+            - /docker/mounts/:/data
+            - /docker/transmission-openvpn/:/config
+        environment:
+            - OPENVPN_PROVIDER=PIA
+            - OPENVPN_CONFIG=ca_toronto,ca_ontario,us_chicago,us_east
+            - OPENVPN_USERNAME=CHANGEME
+            - OPENVPN_PASSWORD=CHANGEME
+            - LOCAL_NETWORK=CHANGEME
+        logging:
+            driver: json-file
+            options:
+                max-size: 24m
+        ports:
+            - '9091:9091'
+        image: haugene/transmission-openvpn
