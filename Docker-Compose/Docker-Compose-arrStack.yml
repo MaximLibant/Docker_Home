@@ -24,8 +24,8 @@ services:
       - TZ=America/Toronto
     volumes:
       - /docker/radarr:/config
-      - /docker/mounts/movies:/movies #optional
-      - /docker/mounts/completed:/downloads #optional
+      - /docker/mounts/movies:/movies
+      - /docker/mounts/completed:/downloads
     ports:
       - 7878:7878
     restart: unless-stopped
@@ -41,8 +41,8 @@ services:
       - TZ=America/Toronto
     volumes:
       - /docker/sonarr/:/config
-      - /docker/mounts/tvshows:/tv #optional
-      - /docker/mounts/completed/:/downloads #optional
+      - /docker/mounts/tvshows:/tv
+      - /docker/mounts/completed/:/downloads
     ports:
       - 8989:8989
     restart: unless-stopped
